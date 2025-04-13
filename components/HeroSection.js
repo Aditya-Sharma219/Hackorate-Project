@@ -58,13 +58,10 @@ const HeroSection = () => {
   ];
 
   // Call useRotatingWords for each game before the map loop
-  const gameWithWords = games.map((game) => {
-    const rotatingWord = useRotatingWords(game.rotating, 2000);
-    return {
-      ...game,
-      word: rotatingWord,
-    };
-  });
+  const gameWithWords = games.map((game) => ({
+    ...game,
+    word: useRotatingWords(game.rotating, 2000),
+  }));
 
   const pay = async (gameTitle, amount) => {
     const username = "exampleUser"; // Example username, you can fetch dynamically
